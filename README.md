@@ -159,6 +159,10 @@ A Postman collection with all endpoints is included in the repo under:
     /postman/JobPlatform.postman_collection.json
 ```
 
+📎 Postman Documentation
+
+[Postman Documentation Link](https://documenter.getpostman.com/view/14128827/2sB3Hrkx6L)
+
 ***
 
 📊 Deliverables
