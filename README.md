@@ -19,25 +19,31 @@ This is a backend system for a job platform where companies can post jobs and jo
    ```bash
    git clone https://github.com/your-username/job-platform.git
    cd job-platform
+   ```
 2. Install dependencies
     ```bash
     composer install
+    ```
 3. Copy .env.example to .env and update:
     ```env
     DB_DATABASE=job_platform
     DB_USERNAME=root
     DB_PASSWORD=
     JWT_SECRET=your_generated_secret
+    ```
 4. Generate key + JWT secret:
     ```bash
     php artisan key:generate
     php artisan jwt:secret
+    ```
 5. Run migrations:
     ```bash
     php artisan migrate
+    ```
 6. Serve app:
     ```bash
     php artisan serve
+    ```
 
 ***
 
@@ -59,9 +65,9 @@ This is a backend system for a job platform where companies can post jobs and jo
 - JWT Token is returned on login.
 
 - For protected routes, send token in header:
-```
+```makefile
     Authorization: Bearer your_token_here
-
+```
 ***
 
 # 📌 API Endpoints
@@ -157,6 +163,7 @@ A Postman collection with all endpoints is included in the repo under:
 
 ```bash
     /postman/JobPlatform.postman_collection.json
+```
 
 ***
 
