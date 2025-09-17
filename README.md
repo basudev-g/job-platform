@@ -62,68 +62,81 @@ This is a backend system for a job platform where companies can post jobs and jo
 ```makefile
     Authorization: Bearer your_token_here
 
+📂 API Endpoints
+🔹 Public Routes
+
+| Method | Endpoint        | Description                                                   |
+| ------ | --------------- | ------------------------------------------------------------- |
+| `POST` | `/api/register` | Register a new user (role: `admin`, `employee`, `job_seeker`) |
+| `POST` | `/api/login`    | Login and get JWT token                                       |
+| `POST` | `/api/logout`   | Logout current user (requires token)                          |
+
+🔹 Common Routes (Any Authenticated User)
+
+| Method | Endpoint    | Description           |
+| ------ | ----------- | --------------------- |
+| `GET`  | `/api/jobs` | List all job listings |
+
 ---
 
-📂 API Endpoints
-🔹 Public
+🔹 Job Seeker Routes
 
-- POST /api/register → Register user (role required: admin, employee, job_seeker).
+Require: role: job_seeker
 
-- POST /api/login → Login and get JWT token.
+| Method | Endpoint                         | Description                                           |
+| ------ | -------------------------------- | ----------------------------------------------------- |
+| `POST` | `/api/jobs/{jobListingId}/apply` | Apply to a job with CV upload (requires payment mock) |
+| `GET`  | `/api/my-applications`           | View logged-in job seeker’s applications              |
 
-🔹 Job Seeker
+---
 
-- GET /api/jobs → List all jobs.
+🔹 Employee (Recruiter) Routes
 
-- POST /api/jobs/{id}/apply → Apply with CV upload + payment (100 Taka).
+Require: role: employee
 
-- GET /api/my-applications → View own applications.
+| Method   | Endpoint                                 | Description                                    |
+| -------- | ---------------------------------------- | ---------------------------------------------- |
+| `POST`   | `/api/jobs`                              | Create a new job posting                       |
+| `PUT`    | `/api/jobs/{jobListing}`                 | Update a job (only if posted by this employee) |
+| `DELETE` | `/api/jobs/{jobListing}`                 | Delete a job (only if posted by this employee) |
+| `GET`    | `/api/jobs/{jobListingId}/applications`  | View applications for a specific job           |
+| `PUT`    | `/api/applications/{application}/status` | Accept or Reject an application                |
 
-🔹 Employee (Recruiter)
+---
 
-- POST /api/jobs → Post new job.
+🔹 Admin Routes
 
-- PUT /api/jobs/{id} → Edit own job.
+Require: role: admin
 
-- DELETE /api/jobs/{id} → Delete own job.
-
-- GET /api/jobs → List jobs (including own).
-
-🔹 Admin
-
-- GET /api/admin/users → View all users.
-
-- GET /api/admin/jobs → View all jobs.
-
-- GET /api/admin/applications → View all applications.
+| Method | Endpoint                  | Description                                    |
+| ------ | ------------------------- | ---------------------------------------------- |
+| `GET`  | `/api/admin/users`        | View all registered users with their companies |
+| `GET`  | `/api/admin/jobs`         | View all job listings                          |
+| `GET`  | `/api/admin/applications` | View all job applications                      |
 
 ---
 
 📎 File Upload
 
-- Job seekers must upload CV as PDF/DOC/DOCX.
+Job seekers must upload CV as PDF/DOC/DOCX.
 
-- Max size: 5MB.
+Max size: 5MB.
 
-- Files stored in storage/app/cvs/.
-
----
+Files stored in storage/app/cvs/.
 
 💳 Payment Flow
 
-- Job seekers must pay 100 Taka before applying.
+Job seekers must pay 100 Taka before applying.
 
-- Currently using a mock payment service:
+Currently using a mock payment service:
 
 Always marks payment as “paid” if request is valid.
 
-- After successful payment:
+After successful payment:
 
 Application is saved with payment_status=paid.
 
 Invoice is created with id, user, amount, time.
-
----
 
 🧪 Postman Collection
 
