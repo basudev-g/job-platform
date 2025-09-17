@@ -77,7 +77,6 @@ Add header:
 
 Authorization: Bearer your_token_here
 
-
 ---
 
 ## 🔹 Public Routes
@@ -137,25 +136,25 @@ Require: `role: admin`
 
 📎 File Upload
 
-Job seekers must upload CV as PDF/DOC/DOCX.
+- Job seekers must upload CV as PDF/DOC/DOCX.
 
-Max size: 5MB.
+- Max size: 5MB.
 
-Files stored in storage/app/cvs/.
+- Files stored in storage/app/cvs/.
 
 💳 Payment Flow
 
-Job seekers must pay 100 Taka before applying.
+- Job seekers must pay 100 Taka before applying.
 
-Currently using a mock payment service:
+- Currently using a mock payment service:
 
 Always marks payment as “paid” if request is valid.
 
-After successful payment:
+- After successful payment:
 
-Application is saved with payment_status=paid.
+- Application is saved with payment_status=paid.
 
-Invoice is created with id, user, amount, time.
+- Invoice is created with id, user, amount, time.
 
 🧪 Postman Collection
 
@@ -181,7 +180,7 @@ A Postman collection with all endpoints is included in the repo under:
 
 👨‍💻 Author
 
-Basudev Goswami
+Basudev Goswami <br>
 Submission for Fire AI Full Stack Development Hiring Task
 
 
