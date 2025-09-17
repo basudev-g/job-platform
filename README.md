@@ -6,7 +6,7 @@ This is a backend system for a job platform where companies can post jobs and jo
 
 ## 🚀 Tech Stack
 - **Language**: PHP  
-- **Framework**: Laravel 10  
+- **Framework**: Laravel 12  
 - **Database**: MySQL  
 - **Authentication**: JWT (tymon/jwt-auth)  
 - **Payment**: Mock Service (can be replaced with Stripe/SSLCommerz)  
@@ -39,7 +39,7 @@ This is a backend system for a job platform where companies can post jobs and jo
     ```bash
     php artisan serve
 
-    ---
+---
 
 👤 Roles & Permissions
 | Role                     | Permissions                                                               |
@@ -52,13 +52,13 @@ This is a backend system for a job platform where companies can post jobs and jo
 
 🔑 Authentication
 
-Register → /api/register
+- Register → /api/register
 
-Login → /api/login
+- Login → /api/login
 
-JWT Token is returned on login.
+- JWT Token is returned on login.
 
-For protected routes, send token in header:
+- For protected routes, send token in header:
 ```makefile
     Authorization: Bearer your_token_here
 
@@ -67,57 +67,57 @@ For protected routes, send token in header:
 📂 API Endpoints
 🔹 Public
 
-POST /api/register → Register user (role required: admin, employee, job_seeker).
+- POST /api/register → Register user (role required: admin, employee, job_seeker).
 
-POST /api/login → Login and get JWT token.
+- POST /api/login → Login and get JWT token.
 
 🔹 Job Seeker
 
-GET /api/jobs → List all jobs.
+- GET /api/jobs → List all jobs.
 
-POST /api/jobs/{id}/apply → Apply with CV upload + payment (100 Taka).
+- POST /api/jobs/{id}/apply → Apply with CV upload + payment (100 Taka).
 
-GET /api/my-applications → View own applications.
+- GET /api/my-applications → View own applications.
 
 🔹 Employee (Recruiter)
 
-POST /api/jobs → Post new job.
+- POST /api/jobs → Post new job.
 
-PUT /api/jobs/{id} → Edit own job.
+- PUT /api/jobs/{id} → Edit own job.
 
-DELETE /api/jobs/{id} → Delete own job.
+- DELETE /api/jobs/{id} → Delete own job.
 
-GET /api/jobs → List jobs (including own).
+- GET /api/jobs → List jobs (including own).
 
 🔹 Admin
 
-GET /api/admin/users → View all users.
+- GET /api/admin/users → View all users.
 
-GET /api/admin/jobs → View all jobs.
+- GET /api/admin/jobs → View all jobs.
 
-GET /api/admin/applications → View all applications.
+- GET /api/admin/applications → View all applications.
 
 ---
 
 📎 File Upload
 
-Job seekers must upload CV as PDF/DOC/DOCX.
+- Job seekers must upload CV as PDF/DOC/DOCX.
 
-Max size: 5MB.
+- Max size: 5MB.
 
-Files stored in storage/app/cvs/.
+- Files stored in storage/app/cvs/.
 
 ---
 
 💳 Payment Flow
 
-Job seekers must pay 100 Taka before applying.
+- Job seekers must pay 100 Taka before applying.
 
-Currently using a mock payment service:
+- Currently using a mock payment service:
 
 Always marks payment as “paid” if request is valid.
 
-After successful payment:
+- After successful payment:
 
 Application is saved with payment_status=paid.
 
