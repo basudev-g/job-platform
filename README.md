@@ -59,21 +59,22 @@ This is a backend system for a job platform where companies can post jobs and jo
 - JWT Token is returned on login.
 
 - For protected routes, send token in header:
-```makefile
+```
     Authorization: Bearer your_token_here
 
 ***
 
-📌 API Endpoints
+# 📌 API Endpoints
 
-All protected routes require JWT authentication.
+All protected routes require JWT authentication.  
 Add header:
-```makefile
+
 Authorization: Bearer your_token_here
 
-***
 
-🔹 Public Routes
+---
+
+## 🔹 Public Routes
 
 | Method | Endpoint        | Description                                                   |
 | ------ | --------------- | ------------------------------------------------------------- |
@@ -81,52 +82,52 @@ Authorization: Bearer your_token_here
 | `POST` | `/api/login`    | Login and get JWT token                                       |
 | `POST` | `/api/logout`   | Logout current user (requires token)                          |
 
-***
+---
 
-🔹 Common Routes (Any Authenticated User)
+## 🔹 Common Routes (Any Authenticated User)
 
-| Method | Endpoint    | Description           |
-| ------ | ----------- | --------------------- |
+| Method | Endpoint | Description            |
+| ------ | -------- | ---------------------- |
 | `GET`  | `/api/jobs` | List all job listings |
 
-***
+---
 
-🔹 Job Seeker Routes
+## 🔹 Job Seeker Routes
 
-Require: role: job_seeker
+Require: `role: job_seeker`  
 
-| Method | Endpoint                         | Description                                           |
-| ------ | -------------------------------- | ----------------------------------------------------- |
-| `POST` | `/api/jobs/{jobListingId}/apply` | Apply to a job with CV upload (requires payment mock) |
-| `GET`  | `/api/my-applications`           | View logged-in job seeker’s applications              |
+| Method | Endpoint                       | Description                                     |
+| ------ | ------------------------------ | ----------------------------------------------- |
+| `POST` | `/api/jobs/{jobListingId}/apply` | Apply to a job with CV upload (requires payment) |
+| `GET`  | `/api/my-applications`           | View logged-in job seeker’s applications         |
 
-***
+---
 
-🔹 Employee (Recruiter) Routes
+## 🔹 Employee (Recruiter) Routes
 
-Require: role: employee
+Require: `role: employee`  
 
-| Method   | Endpoint                                 | Description                                    |
-| -------- | ---------------------------------------- | ---------------------------------------------- |
-| `POST`   | `/api/jobs`                              | Create a new job posting                       |
-| `PUT`    | `/api/jobs/{jobListing}`                 | Update a job (only if posted by this employee) |
-| `DELETE` | `/api/jobs/{jobListing}`                 | Delete a job (only if posted by this employee) |
-| `GET`    | `/api/jobs/{jobListingId}/applications`  | View applications for a specific job           |
-| `PUT`    | `/api/applications/{application}/status` | Accept or Reject an application                |
+| Method | Endpoint                                | Description                                  |
+| ------ | --------------------------------------- | -------------------------------------------- |
+| `POST` | `/api/jobs`                             | Create a new job posting                     |
+| `PUT`  | `/api/jobs/{jobListing}`                | Update a job (only if posted by this employee) |
+| `DELETE` | `/api/jobs/{jobListing}`              | Delete a job (only if posted by this employee) |
+| `GET`  | `/api/jobs/{jobListingId}/applications` | View applications for a specific job          |
+| `PUT`  | `/api/applications/{application}/status` | Accept or Reject an application               |
 
-***
+---
 
-🔹 Admin Routes
+## 🔹 Admin Routes
 
-Require: role: admin
+Require: `role: admin`  
 
-| Method | Endpoint                  | Description                                    |
-| ------ | ------------------------- | ---------------------------------------------- |
-| `GET`  | `/api/admin/users`        | View all registered users with their companies |
-| `GET`  | `/api/admin/jobs`         | View all job listings                          |
-| `GET`  | `/api/admin/applications` | View all job applications                      |
+| Method | Endpoint              | Description                                   |
+| ------ | --------------------- | --------------------------------------------- |
+| `GET`  | `/api/admin/users`    | View all registered users with their companies |
+| `GET`  | `/api/admin/jobs`     | View all job listings                          |
+| `GET`  | `/api/admin/applications` | View all job applications                     |
 
-***
+---
 
 📎 File Upload
 
