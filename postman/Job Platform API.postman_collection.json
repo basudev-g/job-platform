@@ -1,0 +1,413 @@
+{
+	"info": {
+		"_postman_id": "76da7497-5a9e-44b0-a1b4-906c7e46b88e",
+		"name": "Job Platform API",
+		"description": "Postman collection for Laravel Job Platform API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14128827"
+	},
+	"item": [
+		{
+			"name": "Register (Any Role)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"user@example.com\",\n  \"password\": \"password\",\n  \"role\": \"job_seeker\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/register",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"password\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/login",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Jobs - List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/api/jobs",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"jobs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Jobs - Create (Employee)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{employee_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Laravel Developer\",\n  \"description\": \"Looking for Laravel dev\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/jobs",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"jobs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Jobs - Apply (Job Seeker)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{seeker_token}}"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "cv",
+							"type": "file",
+							"src": "/path/to/cv.pdf"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/api/jobs/1/apply",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"jobs",
+						"1",
+						"apply"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Applications - My Applications",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{seeker_token}}"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/api/my-applications",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"my-applications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Applications - View (Recruiter)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{employee_token}}"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/api/jobs/1/applications",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"jobs",
+						"1",
+						"applications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Applications - Update Status (Recruiter)",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{employee_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"status\": \"accepted\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/applications/1/status",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"applications",
+						"1",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin - Users",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{admin_token}}"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/api/admin/users",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin - Jobs",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{admin_token}}"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/api/admin/jobs",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"jobs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin - Applications",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{admin_token}}"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/api/admin/applications",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"applications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "seeker_logout",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{seeker_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/api/logout",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "employee_logout",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{employee_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/api/logout",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin_logout",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{admin_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/api/logout",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://127.0.0.1:8000"
+		},
+		{
+			"key": "token",
+			"value": ""
+		},
+		{
+			"key": "employee_token",
+			"value": ""
+		},
+		{
+			"key": "seeker_token",
+			"value": ""
+		},
+		{
+			"key": "admin_token",
+			"value": ""
+		}
+	]
+}
