@@ -39,7 +39,7 @@ This is a backend system for a job platform where companies can post jobs and jo
     ```bash
     php artisan serve
 
----
+***
 
 👤 Roles & Permissions
 | Role                     | Permissions                                                               |
@@ -48,7 +48,7 @@ This is a backend system for a job platform where companies can post jobs and jo
 | **Employee (Recruiter)** | Post/edit/delete jobs for their company. View & accept/reject applicants. |
 | **Job Seeker**           | View jobs, apply (with CV upload + payment), view own applications.       |
 
----
+***
 
 🔑 Authentication
 
@@ -62,6 +62,8 @@ This is a backend system for a job platform where companies can post jobs and jo
 ```makefile
     Authorization: Bearer your_token_here
 
+***
+
 📂 API Endpoints
 🔹 Public Routes
 
@@ -71,13 +73,15 @@ This is a backend system for a job platform where companies can post jobs and jo
 | `POST` | `/api/login`    | Login and get JWT token                                       |
 | `POST` | `/api/logout`   | Logout current user (requires token)                          |
 
+***
+
 🔹 Common Routes (Any Authenticated User)
 
 | Method | Endpoint    | Description           |
 | ------ | ----------- | --------------------- |
 | `GET`  | `/api/jobs` | List all job listings |
 
----
+***
 
 🔹 Job Seeker Routes
 
@@ -88,7 +92,7 @@ Require: role: job_seeker
 | `POST` | `/api/jobs/{jobListingId}/apply` | Apply to a job with CV upload (requires payment mock) |
 | `GET`  | `/api/my-applications`           | View logged-in job seeker’s applications              |
 
----
+***
 
 🔹 Employee (Recruiter) Routes
 
@@ -102,7 +106,7 @@ Require: role: employee
 | `GET`    | `/api/jobs/{jobListingId}/applications`  | View applications for a specific job           |
 | `PUT`    | `/api/applications/{application}/status` | Accept or Reject an application                |
 
----
+***
 
 🔹 Admin Routes
 
@@ -114,7 +118,7 @@ Require: role: admin
 | `GET`  | `/api/admin/jobs`         | View all job listings                          |
 | `GET`  | `/api/admin/applications` | View all job applications                      |
 
----
+***
 
 📎 File Upload
 
@@ -145,7 +149,7 @@ A Postman collection with all endpoints is included in the repo under:
 ```bash
     /postman/JobPlatform.postman_collection.json
 
----
+***
 
 📊 Deliverables
 
