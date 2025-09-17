@@ -64,7 +64,15 @@ This is a backend system for a job platform where companies can post jobs and jo
 
 ***
 
-📂 API Endpoints
+📌 API Endpoints
+
+All protected routes require JWT authentication.
+Add header:
+```makefile
+Authorization: Bearer your_token_here
+
+***
+
 🔹 Public Routes
 
 | Method | Endpoint        | Description                                                   |
