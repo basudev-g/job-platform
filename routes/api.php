@@ -43,5 +43,16 @@ Route::middleware('auth:api')->group(function () {
         Route::get('admin/users', [AdminController::class, 'users']);
         Route::get('admin/jobs', [AdminController::class, 'jobs']);
         Route::get('admin/applications', [AdminController::class, 'applications']);
+
+        // 🔹 Admin Manage Users
+        Route::post('admin/users', [AdminController::class, 'createUser']);
+        Route::put('admin/users/{user}', [AdminController::class, 'updateUser']);
+        Route::delete('admin/users/{user}', [AdminController::class, 'deleteUser']);
+        Route::put('admin/users/{user}/reset-password', [AdminController::class, 'resetPassword']);
+
+        // 🔹 Admin Manage Jobs
+        Route::post('admin/jobs', [AdminController::class, 'createJob']);
+        Route::put('admin/jobs/{jobListing}', [AdminController::class, 'updateJob']);
+        Route::delete('admin/jobs/{jobListing}', [AdminController::class, 'deleteJob']);
     });
 });

@@ -303,6 +303,97 @@
 			},
 			"response": []
 		},
+        {
+            "name": "Admin - Create User",
+            "request": {
+                "method": "POST",
+                "header": [
+                { "key": "Content-Type", "value": "application/json" },
+                { "key": "Authorization", "value": "Bearer {{admin_token}}" }
+                ],
+                "body": {
+                "mode": "raw",
+                "raw": "{\n  \"name\": \"New User\",\n  \"email\": \"newuser@example.com\",\n  \"password\": \"password\",\n  \"role\": \"job_seeker\"\n}"
+                },
+                "url": { "raw": "{{base_url}}/api/admin/users", "host": ["{{base_url}}"], "path": ["api", "admin", "users"] }
+            }
+        },
+        {
+            "name": "Admin - Update User",
+            "request": {
+                "method": "PUT",
+                "header": [
+                { "key": "Content-Type", "value": "application/json" },
+                { "key": "Authorization", "value": "Bearer {{admin_token}}" }
+                ],
+                "body": {
+                "mode": "raw",
+                "raw": "{\n  \"name\": \"Updated User\"\n}"
+                },
+                "url": { "raw": "{{base_url}}/api/admin/users/2", "host": ["{{base_url}}"], "path": ["api", "admin", "users", "2"] }
+            }
+        },
+        {
+            "name": "Admin - Reset User Password",
+            "request": {
+                "method": "PUT",
+                "header": [
+                { "key": "Content-Type", "value": "application/json" },
+                { "key": "Authorization", "value": "Bearer {{admin_token}}" }
+                ],
+                "body": {
+                "mode": "raw",
+                "raw": "{\n  \"password\": \"newpassword123\"\n}"
+                },
+                "url": { "raw": "{{base_url}}/api/admin/users/2/reset-password", "host": ["{{base_url}}"], "path": ["api", "admin", "users", "2", "reset-password"] }
+            }
+        },
+        {
+            "name": "Admin - Delete User",
+            "request": {
+                "method": "DELETE",
+                "header": [{ "key": "Authorization", "value": "Bearer {{admin_token}}" }],
+                "url": { "raw": "{{base_url}}/api/admin/users/2", "host": ["{{base_url}}"], "path": ["api", "admin", "users", "2"] }
+            }
+        },
+        {
+            "name": "Admin - Create Job",
+            "request": {
+                "method": "POST",
+                "header": [
+                { "key": "Content-Type", "value": "application/json" },
+                { "key": "Authorization", "value": "Bearer {{admin_token}}" }
+                ],
+                "body": {
+                "mode": "raw",
+                "raw": "{\n  \"title\": \"Backend Engineer\",\n  \"description\": \"Responsible for building APIs\",\n  \"company_id\": 1,\n  \"posted_by\": 2\n}"
+                },
+                "url": { "raw": "{{base_url}}/api/admin/jobs", "host": ["{{base_url}}"], "path": ["api", "admin", "jobs"] }
+            }
+        },
+        {
+            "name": "Admin - Update Job",
+            "request": {
+                "method": "PUT",
+                "header": [
+                { "key": "Content-Type", "value": "application/json" },
+                { "key": "Authorization", "value": "Bearer {{admin_token}}" }
+                ],
+                "body": {
+                "mode": "raw",
+                "raw": "{\n  \"title\": \"Updated Job Title\"\n}"
+                },
+                "url": { "raw": "{{base_url}}/api/admin/jobs/1", "host": ["{{base_url}}"], "path": ["api", "admin", "jobs", "1"] }
+            }
+        },
+        {
+            "name": "Admin - Delete Job",
+            "request": {
+                "method": "DELETE",
+                "header": [{ "key": "Authorization", "value": "Bearer {{admin_token}}" }],
+                "url": { "raw": "{{base_url}}/api/admin/jobs/1", "host": ["{{base_url}}"], "path": ["api", "admin", "jobs", "1"] }
+            }
+        },
 		{
 			"name": "seeker_logout",
 			"request": {

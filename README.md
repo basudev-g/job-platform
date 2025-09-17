@@ -2,16 +2,12 @@
 
 This is a backend system for a job platform where companies can post jobs and job seekers can apply with a payment. It includes **role-based access control** for Admins, Employees (Recruiters), and Job Seekers.  
 
----
-
 ## 🚀 Tech Stack
 - **Language**: PHP  
 - **Framework**: Laravel 12  
 - **Database**: MySQL  
 - **Authentication**: JWT (tymon/jwt-auth)  
 - **Payment**: Mock Service (can be replaced with Stripe/SSLCommerz)  
-
----
 
 ## ⚙️ Setup Instructions
 
@@ -68,7 +64,6 @@ This is a backend system for a job platform where companies can post jobs and jo
 ```makefile
     Authorization: Bearer your_token_here
 ```
-***
 
 # 📌 API Endpoints
 
@@ -76,8 +71,6 @@ All protected routes require JWT authentication.
 Add header:
 
 Authorization: Bearer your_token_here
-
----
 
 ## 🔹 Public Routes
 
@@ -87,15 +80,11 @@ Authorization: Bearer your_token_here
 | `POST` | `/api/login`    | Login and get JWT token                                       |
 | `POST` | `/api/logout`   | Logout current user (requires token)                          |
 
----
-
 ## 🔹 Common Routes (Any Authenticated User)
 
 | Method | Endpoint | Description            |
 | ------ | -------- | ---------------------- |
 | `GET`  | `/api/jobs` | List all job listings |
-
----
 
 ## 🔹 Job Seeker Routes
 
@@ -105,8 +94,6 @@ Require: `role: job_seeker`
 | ------ | ------------------------------ | ----------------------------------------------- |
 | `POST` | `/api/jobs/{jobListingId}/apply` | Apply to a job with CV upload (requires payment) |
 | `GET`  | `/api/my-applications`           | View logged-in job seeker’s applications         |
-
----
 
 ## 🔹 Employee (Recruiter) Routes
 
@@ -120,8 +107,6 @@ Require: `role: employee`
 | `GET`  | `/api/jobs/{jobListingId}/applications` | View applications for a specific job          |
 | `PUT`  | `/api/applications/{application}/status` | Accept or Reject an application               |
 
----
-
 ## 🔹 Admin Routes
 
 Require: `role: admin`  
@@ -131,6 +116,16 @@ Require: `role: admin`
 | `GET`  | `/api/admin/users`    | View all registered users with their companies |
 | `GET`  | `/api/admin/jobs`     | View all job listings                          |
 | `GET`  | `/api/admin/applications` | View all job applications                     |
+| `GET`    | `/api/admin/users`      | View all users          |
+| `POST`   | `/api/admin/users`      | Create a new user       |
+| `PUT`    | `/api/admin/users/{id}` | Update an existing user |
+| `DELETE` | `/api/admin/users/{id}` | Delete a user           |
+| `PUT`    | `/api/admin/users/{id}/reset-password` | Reset a user’s password |
+| `GET`    | `/api/admin/jobs`      | View all job listings          |
+| `POST`   | `/api/admin/jobs`      | Create a job listing           |
+| `PUT`    | `/api/admin/jobs/{id}` | Update an existing job listing |
+| `DELETE` | `/api/admin/jobs/{id}` | Delete a job listing           |
+
 
 ---
 
@@ -176,7 +171,6 @@ A Postman collection with all endpoints is included in the repo under:
 
 ✅ Postman Documentation
 
----
 
 👨‍💻 Author
 
